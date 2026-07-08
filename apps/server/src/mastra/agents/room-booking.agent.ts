@@ -2,6 +2,8 @@ import { Agent } from "@mastra/core/agent";
 import { Memory } from "@mastra/memory";
 import { mongoDBStore } from "../storage/mongodb";
 import { openrouterModel } from "../models/openrouter";
+import { checkRoomAvailabilityTool } from "../tools/check-room-availability.tool";
+import { createBookingTool } from "../tools/create-booking.tool";
 
 export const roomBookingAgent = new Agent({
   id: "roomBookingAgent",
@@ -32,4 +34,8 @@ Guidelines:
       generateTitle: true,
     },
   }),
+  tools: {
+    checkRoomAvailabilityTool,
+    createBookingTool,
+  },
 });

@@ -63,9 +63,15 @@ importers:
       '@types/node':
         specifier: ^26.1.0
         version: 26.1.0
+      dotenv:
+        specifier: ^17.4.2
+        version: 17.4.2
       mastra:
         specifier: ^1.18.2
         version: 1.18.2(@hono/node-server@1.19.14(hono@4.12.28))(@mastra/core@1.50.1(@bufbuild/protobuf@2.12.1)(@cfworker/json-schema@4.1.1)(express@5.2.1)(rxjs@7.8.1)(zod@4.4.3))(rxjs@7.8.1)(typescript@6.0.3)(zod@4.4.3)
+      tsx:
+        specifier: ^4.23.0
+        version: 4.23.0
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -3281,6 +3287,11 @@ packages:
 
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
+
+  tsx@4.23.0:
+    resolution: {integrity: sha512-eUdUIaCr963q2h5u3+QwvYp0+eqPvn+egeqZUm0hwERCqqx1E3kK5ehbGCvqSE5MQAULr67ww0cA3jKc3YkM1w==}
+    engines: {node: '>=18.0.0'}
+    hasBin: true
 
   type-fest@2.19.0:
     resolution: {integrity: sha512-RAH822pAdBgcNMAfWnCBU3CFZcfZ/i1eZjwFU/dsLKumyuuP3niueg2UAukXYF0E2AAoc82ZSSf9J0WQBinzHA==}
@@ -7261,6 +7272,12 @@ snapshots:
   trough@2.2.0: {}
 
   tslib@2.8.1: {}
+
+  tsx@4.23.0:
+    dependencies:
+      esbuild: 0.28.1
+    optionalDependencies:
+      fsevents: 2.3.3
 
   type-fest@2.19.0: {}
 

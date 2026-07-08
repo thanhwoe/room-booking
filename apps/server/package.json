@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "mastra dev",
     "build": "mastra build",
-    "start": "mastra start"
+    "start": "mastra start",
+    "seed:rooms": "tsx src/mastra/database/seed-rooms.ts"
   },
   "keywords": [],
   "author": "",
@@ -37,7 +38,9 @@
   },
   "devDependencies": {
     "@types/node": "^26.1.0",
+    "dotenv": "^17.4.2",
     "mastra": "^1.18.2",
+    "tsx": "^4.23.0",
     "typescript": "^6.0.3"
   }
 }

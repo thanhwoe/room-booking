@@ -6,9 +6,8 @@ export default function Home() {
     <div className="flex min-h-screen flex-col gap-4 px-4 py-20">
       <CopilotChat
         labels={{
-          modalHeaderTitle: "Weather Agent",
-          welcomeMessageText:
-            "Hi! 👋 Ask me about the weather, forecasts, and climate.",
+          modalHeaderTitle: "Room Booking Assistant",
+          welcomeMessageText: "Hi! What do you need?",
         }}
       />
     </div>
