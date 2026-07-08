@@ -9,10 +9,10 @@ import {
 } from "@mastra/observability";
 import { registerCopilotKit } from "@ag-ui/mastra/copilotkit";
 import { mongoDBStore } from "./storage/mongodb";
-import { mongodbAgent } from "./agents/mongodb.agent";
+import { roomBookingAgent } from "./agents/room-booking.agent";
 
 export const mastra = new Mastra({
-  agents: { mongodbAgent },
+  agents: { roomBookingAgent },
   storage: mongoDBStore,
   logger: new PinoLogger({
     name: "Mastra",
@@ -41,7 +41,7 @@ export const mastra = new Mastra({
     apiRoutes: [
       registerCopilotKit({
         path: "/chat",
-        resourceId: "mongodbAgent",
+        resourceId: "roomBookingAgent",
       }),
     ],
   },

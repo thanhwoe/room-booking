@@ -29,11 +29,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        {" "}
-        <CopilotKit
-          runtimeUrl="http://localhost:4111/chat"
-          agent="weatherAgent"
-        >
+        <CopilotKit runtimeUrl="/api/copilotkit" agent="roomBookingAgent">
           {children}
         </CopilotKit>
       </body>
