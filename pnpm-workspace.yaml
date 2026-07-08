@@ -1,0 +1,16 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+allowBuilds:
+  "@scarf/scarf": true
+  esbuild: true
+  sharp: true
+  unrs-resolver: true
+minimumReleaseAgeExclude:
+  - '@mastra/client-js@1.31.1'
+  - '@mastra/core@1.50.1'
+  - '@mastra/deployer@1.50.1'
+  - '@mastra/duckdb@1.5.1'
+  - '@mastra/memory@1.22.2'
+  - '@mastra/server@1.50.1'
+  - mastra@1.18.2
