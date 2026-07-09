@@ -1,4 +1,5 @@
-export function formatRange(startTime: string, endTime: string) {
+export function formatRange(startTime?: string, endTime?: string) {
+  if (!startTime || !endTime) return null;
   const start = new Date(startTime);
   const end = new Date(endTime);
   const dateFormatter = new Intl.DateTimeFormat("en-US", {
