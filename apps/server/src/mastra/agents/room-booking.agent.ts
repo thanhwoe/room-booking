@@ -7,6 +7,7 @@ import { createBookingTool } from "../tools/create-booking.tool";
 import { listBookingsTool } from "../tools/list-bookings.tool";
 import { updateBookingTool } from "../tools/update-booking.tool";
 import { cancelBookingTool } from "../tools/cancel-booking.tool";
+import { getCurrentDatetimeTool } from "../tools/get-current-datetime.tool";
 
 export const roomBookingAgent = new Agent({
   id: "roomBookingAgent",
@@ -21,6 +22,8 @@ export const roomBookingAgent = new Agent({
     name first if not provided).
   - Update an existing booking's time or attendee count, using the update-booking tool.
   - Cancel an existing booking, using the cancel-booking tool.
+  - Look up the exact current date/time, using the get-current-datetime tool, when
+  you need to double-check it or convert to a timezone the user mentioned.
 
   CRITICAL CONFIRMATION RULE:
   Before calling create-booking, update-booking, or cancel-booking, you MUST first
@@ -58,5 +61,6 @@ export const roomBookingAgent = new Agent({
     listBookingsTool,
     updateBookingTool,
     cancelBookingTool,
+    getCurrentDatetimeTool,
   },
 });

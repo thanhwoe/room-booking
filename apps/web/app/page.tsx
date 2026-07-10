@@ -2,6 +2,7 @@ import "@copilotkit/react-core/v2/styles.css";
 import { CopilotChat } from "@copilotkit/react-core/v2";
 import { BookingListCard } from "@/components/booking-list-card";
 import { BookingConfirmCard } from "@/components/booking-confirm-card";
+import { StopGenerationButton } from "@/components/stop-generation-button";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
           welcomeMessageText: "Hi! What do you need?",
         }}
       />
+      {/* <StopGenerationButton /> */}
     </div>
   );
 }

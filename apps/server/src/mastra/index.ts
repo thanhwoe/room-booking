@@ -41,7 +41,7 @@ export const mastra = new Mastra({
     apiRoutes: [
       registerCopilotKit({
         path: "/chat",
-        resourceId: "roomBookingAgent",
+        resourceId: "room-booking-agent",
       }),
     ],
   },
