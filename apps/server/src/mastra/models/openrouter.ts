@@ -4,4 +4,5 @@ const openrouter = createOpenRouter({
   apiKey: process.env.OPENROUTER_API_KEY,
 });
 
-export const openrouterModel = openrouter("tencent/hy3:free");
+// tencent/hy3:free
+export const openrouterModel = openrouter("poolside/laguna-m.1:free");
