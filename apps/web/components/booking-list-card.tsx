@@ -1,10 +1,12 @@
 "use client";
 
 import { useRenderTool } from "@copilotkit/react-core/v2";
-import { BookingCard } from "./booking-card";
-import { bookingSchema } from "@/schemas/booking";
 
-interface BookingListCardProps {
+import { BookingCard } from "@/components/booking-card";
+import { bookingSchema } from "@/schemas/booking";
+import { AGENT_ID } from "@/constants/agent";
+
+interface BookingListResult {
   bookings: {
     id: string;
     roomId: string;
@@ -21,29 +23,40 @@ interface BookingListCardProps {
 export function BookingListCard() {
   useRenderTool(
     {
-      name: "list-bookings",
+      agentId: AGENT_ID,
+      name: "listBookingsTool",
       parameters: bookingSchema,
-
       render: ({ status, result }) => {
         if (status !== "complete") {
           return (
-            <div className="p-2 text-sm text-gray-500">
+            <div className="w-full animate-pulse rounded-xl border bg-muted/40 p-4 text-sm text-muted-foreground">
               Looking up bookings...
             </div>
           );
         }
-        const data = (
-          typeof result === "string" ? JSON.parse(result) : result
-        ) as BookingListCardProps;
+
+        let data: BookingListResult;
+
+        try {
+          data = JSON.parse(result) as BookingListResult;
+        } catch {
+          return (
+            <div className="w-full rounded-xl border border-destructive/20 bg-destructive/5 p-4 text-sm text-destructive">
+              Could not display the booking information.
+            </div>
+          );
+        }
+
         if (data.bookings.length === 0) {
           return (
-            <div className="w-full rounded-lg border border-gray-200 bg-gray-50 p-4 text-sm text-gray-600">
+            <div className="w-full rounded-xl border bg-muted/40 p-4 text-sm text-muted-foreground">
               No bookings found.
             </div>
           );
         }
+
         return (
-          <div className="flex w-full flex-col gap-2">
+          <div className="flex w-full flex-col gap-3">
             {data.bookings.map((booking) => (
               <BookingCard key={booking.id} booking={booking} />
             ))}

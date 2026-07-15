@@ -1,68 +1,63 @@
+import type { ComponentProps } from "react";
+
 import {
   CopilotChatInput,
-  CopilotChatInputProps,
+  type CopilotChatInputProps,
 } from "@copilotkit/react-core/v2";
-import { ChatSendButton } from "./chat-send-button";
-import { cn } from "@/lib/utils";
 import { SparklesIcon } from "lucide-react";
 
-export const ChatInput = ({
+import { ChatSendButton } from "@/components/chat-send-button";
+import { cn } from "@/lib/utils";
+
+type AddMenuButtonProps = ComponentProps<typeof CopilotChatInput.AddMenuButton>;
+
+function ChatLeadingIcon(_props: AddMenuButtonProps) {
+  return (
+    <span
+      className="flex size-10 shrink-0 items-center justify-center text-zinc-900"
+      aria-hidden="true"
+    >
+      <SparklesIcon className="size-5" />
+    </span>
+  );
+}
+
+export function ChatInput({
   children: _children,
   className,
   ...props
-}: CopilotChatInputProps) => {
+}: CopilotChatInputProps) {
   const isWelcomeScreen = props.bottomAnchored !== true;
 
   return (
     <CopilotChatInput
       {...props}
-      className={className}
+      className={cn(
+        "room-booking-chat-input",
+
+        "[&_.copilotKitInput]:border",
+        "[&_.copilotKitInput]:border-zinc-200",
+        "[&_.copilotKitInput]:bg-white",
+        "[&_.copilotKitInput]:shadow-[0_12px_40px_rgba(24,24,27,0.06)]",
+        "[&_.copilotKitInput]:transition-all",
+        "[&_.copilotKitInput:focus-within]:border-zinc-300",
+        "[&_.copilotKitInput:focus-within]:shadow-[0_16px_50px_rgba(24,24,27,0.09)]",
+
+        isWelcomeScreen &&
+          "[&_.copilotKitInput]:min-h-44 [&_.copilotKitInput]:rounded-3xl",
+
+        className,
+      )}
+      addMenuButton={ChatLeadingIcon}
       sendButton={ChatSendButton}
       textArea={{
         className: cn(
-          "w-full bg-transparent px-0",
-          "text-base leading-7",
+          "w-full bg-transparent text-base leading-7",
           "placeholder:text-zinc-400",
-          isWelcomeScreen ? "min-h-28 py-0" : "min-h-12 py-0",
+
+          isWelcomeScreen ? "min-h-28 py-3" : "min-h-12 py-3",
         ),
       }}
-    >
-      {({ textArea, sendButton }) => (
-        <div
-          className={cn(
-            "pointer-events-none w-full px-4",
-            !isWelcomeScreen && "pb-4",
-          )}
-        >
-          <div
-            className={cn(
-              "pointer-events-auto mx-auto",
-              "flex w-full max-w-3xl",
-              "border border-zinc-200",
-              "bg-white",
-              "shadow-[0_12px_40px_rgba(24,24,27,0.06)]",
-              "transition-all",
-              "focus-within:border-zinc-300",
-              "focus-within:shadow-[0_16px_50px_rgba(24,24,27,0.09)]",
-              isWelcomeScreen
-                ? "min-h-44 items-start rounded-3xl p-5"
-                : "items-end rounded-2xl p-3",
-            )}
-          >
-            <SparklesIcon
-              className={cn(
-                "size-5 shrink-0 text-zinc-900",
-                isWelcomeScreen ? "mt-1" : "mb-2.5",
-              )}
-              aria-hidden="true"
-            />
-
-            <div className="min-w-0 flex-1 px-3">{textArea}</div>
-
-            <div className="shrink-0 self-end">{sendButton}</div>
-          </div>
-        </div>
-      )}
-    </CopilotChatInput>
+    />
   );
-};
+}
