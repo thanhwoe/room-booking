@@ -5,4 +5,4 @@ const openrouter = createOpenRouter({
 });
 
 // tencent/hy3:free
-export const openrouterModel = openrouter("poolside/laguna-m.1:free");
+export const openrouterModel = openrouter("tencent/hy3:free");

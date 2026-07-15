@@ -59,6 +59,16 @@ export function getOrCreateConversationSession(): ConversationSession {
   };
 }
 
+export function createNewConversationThread(): string {
+  const threadId = crypto.randomUUID();
+
+  if (isBrowser()) {
+    window.localStorage.setItem(THREAD_ID_STORAGE_KEY, threadId);
+  }
+
+  return threadId;
+}
+
 export function clearConversationSession(): void {
   if (!isBrowser()) {
     return;
