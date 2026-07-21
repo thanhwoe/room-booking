@@ -14,6 +14,7 @@
   "author": "",
   "license": "ISC",
   "type": "module",
+  "packageManager": "pnpm@10.17.1",
   "engines": {
     "node": ">=22.13.0"
   },
@@ -24,6 +25,7 @@
     "@copilotkit/runtime": "^1.62.2",
     "@mastra/client-js": "^1.31.1",
     "@mastra/core": "^1.50.1",
+    "@mastra/deployer-vercel": "^1.2.7",
     "@mastra/duckdb": "^1.5.1",
     "@mastra/evals": "^1.5.1",
     "@mastra/libsql": "^1.15.1",
