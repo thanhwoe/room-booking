@@ -16,3 +16,10 @@ export const bookingConfirmSchema = z.object({
   attendees: z.number().optional(),
   bookingId: z.string().optional(),
 });
+
+export const roomAvailabilitySchema = z.object({
+  startTime: z.string(),
+  endTime: z.string(),
+
+  minCapacity: z.number().int().positive().optional(),
+});

@@ -8,6 +8,7 @@ import { listBookingsTool } from "../tools/list-bookings.tool";
 import { updateBookingTool } from "../tools/update-booking.tool";
 import { cancelBookingTool } from "../tools/cancel-booking.tool";
 import { getCurrentDatetimeTool } from "../tools/get-current-datetime.tool";
+import { geminiModel } from "../models/google";
 
 export const roomBookingAgent = new Agent({
   id: "roomBookingAgent",
@@ -48,8 +49,11 @@ export const roomBookingAgent = new Agent({
   - If any mutating tool returns success: false, explain the reason to the user and
     suggest alternatives.
   - Always confirm the final outcome of an action (booked / updated / cancelled) clearly.
+  - After calling checkRoomAvailabilityTool, do not repeat all room details
+    as a Markdown table or long list. The frontend renders available rooms
+    as cards. Only provide a short summary or ask which room the user prefers.
   `.trim(),
-  model: openrouterModel,
+  model: geminiModel,
   memory: new Memory({
     storage: mongoDBStore,
     options: {
